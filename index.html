@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <title>Header with Navbar</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+      }
+
+      /* Header: Logo + Search */
+      .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 40px;
+        background-color: #f2f2f2;
+      }
+
+      .logo img {
+        height: 60px;
+      }
+
+      .search-container {
+        display: flex;
+        align-items: center;
+      }
+
+      .search-input {
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        outline: none;
+      }
+
+      .search-button {
+        background-color: #999;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      .search-button:hover {
+        background-color: #777;
+      }
+
+      /* Navbar styles */
+      .custom-navbar {
+        background-color: #ccc;
+      }
+
+      .navbar-nav {
+        margin-left: 0;
+      }
+
+      .navbar-nav .nav-link {
+        color: white !important;
+        font-weight: 500;
+        padding: 14px 20px;
+        margin: auto 20px;
+      }
+
+      .navbar-nav .nav-link:hover {
+        background-color: #aaa;
+      }
+
+      .carousel-layout {
+        display: flex;
+        width: 100%;
+        height: 400px;
+      }
+
+      .carousel-left {
+        flex: 3;
+        overflow: hidden;
+      }
+
+      .carousel-left img {
+        width: 100%;
+        height: 100%;
+        object-fit: fill;
+      }
+
+      .carousel-right {
+        flex: 1;
+        background: #444;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+      }
+
+      .carousel-btn {
+        padding: 20px;
+        border: none;
+        background: #666;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .carousel-btn:hover {
+        background: #999;
+      }
+
+      /* .marquee-item */
+
+      .mt-3 {
+        margin: 25px 0;
+      }
+
+      .hover-img {
+        width: 23%;
+        height: 22vh;
+        background-color: #ccc;
+        color: #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        border-radius: 4px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+      }
+
+      .hover-img:hover {
+        transform: scale(1.2);
+        background-color: #aaa;
+      }
+
+      .marquee-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 15px;
+        background: #fff;
+        margin: 10px;
+        cursor: pointer;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .image-box {
+        width: 60px;
+        height: 60px;
+        background: #666;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 10px;
+        border-radius: 4px;
+        flex-shrink: 0;
+      }
+
+      .text-box {
+        height: 60px;
+        overflow: hidden;
+        flex: 1;
+        position: relative;
+      }
+
+      .marquee-text {
+        position: absolute;
+        animation: scroll-up-text 6s linear infinite;
+        white-space: normal;
+        width: 100%;
+        color: #333;
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      @keyframes scroll-up-text {
+        0% {
+          top: 100%;
+        }
+        100% {
+          top: -100%;
+        }
+      }
+
+      /* Modal */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .modal-box {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        width: 300px;
+        max-width: 80%;
+        text-align: center;
+      }
+
+      .modal-overlay.active {
+        display: flex;
+      }
+
+      .footer {
+        width: 100%;
+        height: 25vh;
+        margin-top: 20px;
+        background-color: #ddd;
+        padding: 50px 20px;
+      }
+      .navbar-nav {
+        flex-direction: row;
+      }
+
+      .footer h2 {
+        font-size: 2em;
+        margin-bottom: 10px;
+      }
+
+      .footer p {
+        margin: 10px 0 30px;
+        opacity: 0.8;
+      }
+
+      /* Social Links */
+
+      .social-links {
+        display: flex;
+        justify-content: center;
+        align-items: right;
+        gap: 20px;
+        margin-bottom: 30px;
+      }
+
+      .social-links a {
+        color: black;
+        font-size: 20px;
+        transition: 0.3s;
+      }
+
+      .social-links a:hover {
+        color: #00bfff;
+      }
+
+      @media (min-width: 768px and max-width: 1024px) {
+        .medi {
+          height: 35vh !important;
+        }
+
+        .footer {
+          height: 26vh;
+        }
+
+        .marquee-item {
+          margin: 20px;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header-top">
+      <div class="logo">
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg"
+          alt="Nike Logo"
+        />
+      </div>
+      <div class="search-container">
+        <input type="text" class="search-input" placeholder="Search..." />
+        <button class="search-button">Search</button>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg custom-navbar">
+      <div class="container-fluid">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#">Page 1</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Page 2</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Page 3</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Page 4</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Page 5</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- carousel -->
+    <div class="carousel-layout">
+      <!-- Left carousel -->
+      <div
+        id="carouselExampleSlidesOnly"
+        class="carousel slide carousel-left"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner h-100">
+          <div class="carousel-item active h-100">
+            <img
+              src="https://th.bing.com/th/id/OIP.qCU9Sg6MOWxnkhoyAinYcwHaEK?w=281&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+              class="d-block"
+              alt="Slide 1"
+            />
+          </div>
+          <div class="carousel-item h-100">
+            <img
+              src="https://th.bing.com/th/id/OIP.QXZz6U1kH8diI4rzejdd9gHaE8?w=237&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+              class="d-block"
+              alt="Slide 2"
+            />
+          </div>
+          <div class="carousel-item h-100">
+            <img
+              src="https://th.bing.com/th/id/OIP.uhlH_kKHKAv1YWCelc4icgHaFj?w=211&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+              class="d-block"
+              alt="Slide 3"
+            />
+          </div>
+          <div class="carousel-item h-100">
+            <img
+              src="https://th.bing.com/th/id/OIP.BNEC0-KNaetnJMBv7K75EQHaEK?rs=1&pid=ImgDetMain"
+              class="d-block"
+              alt="Slide 4"
+            />
+          </div>
+          <div class="carousel-item h-100">
+            <img
+              src="https://th.bing.com/th/id/OIP.STzJ6gUdQiiDRQD17lAbwwHaFS?w=213&h=180&c=7&r=0&o=5&dpr=1.1&pid=1.7"
+              class="d-block"
+              alt="Slide 5"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right buttons -->
+      <div class="carousel-right">
+        <button class="carousel-btn" onclick="goToSlide(0)">BANNER 1</button>
+        <button class="carousel-btn" onclick="goToSlide(1)">BANNER 2</button>
+        <button class="carousel-btn" onclick="goToSlide(2)">BANNER 3</button>
+        <button class="carousel-btn" onclick="goToSlide(3)">BANNER 4</button>
+        <button class="carousel-btn" onclick="goToSlide(4)">BANNER 5</button>
+      </div>
+    </div>
+
+    <!-- mid-section  -->
+    <div class="container-fluid mt-3">
+      <div class="row">
+        <!-- Left 75% -->
+        <div class="col-md-9">
+          <!-- Left content goes here -->
+          <div style="background-color: #f8f9fa; padding: 20px" class="medi">
+            <div
+              style="
+                background-color: #888;
+                color: white;
+                padding: 10px;
+                margin-bottom: 20px;
+              "
+            >
+              <h5 class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit
+                maiores magnam dolores aut modi aperiam laborum minima facere a
+                unde.
+              </p>
+            </div>
+            <div style="background-color: #aaa; color: white; padding: 20px">
+              <marquee class="mb-0">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </marquee>
+            </div>
+            <div
+              style="
+                display: flex;
+                gap: 10px;
+                margin-top: 20px;
+                flex-wrap: wrap;
+              "
+            >
+              <div class="hover-img">
+                <img
+                  src="blob:https://web.whatsapp.com/452961fc-9a87-4ce0-a34c-7a60bc8804b1"
+                  alt="alt"
+                />
+              </div>
+              <div class="hover-img">IMAGE</div>
+              <div class="hover-img">IMAGE</div>
+              <div class="hover-img">IMAGE</div>
+              <!-- <div class="hover-img">IMAGE</div> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 25% -->
+        <div class="col-md-3">
+          <!-- Right content goes here -->
+          <div style="background-color: #ddd" class="medi">
+            <h4 class="text-center py-3 bg-blue">Heading</h4>
+            <div class="marquee-item" onclick="openModal('Modal 1')">
+              <div class="image-box">IMAGE</div>
+              <div class="text-box">
+                <div class="marquee-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Dolore id, nisi debitis excepturi placeat numquam? Labore
+                  itaque voluptatibus est illum blanditiis atque cupiditate
+                  nesciunt dolor debitis architecto? Nobis vel quis dolorum
+                  aperiam.
+                </div>
+              </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="marquee-item" onclick="openModal('Modal 2')">
+              <div class="image-box">IMAGE</div>
+              <div class="text-box">
+                <div class="marquee-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda repellat, quam earum odio mollitia suscipit
+                  doloremque molestias veritatis recusandae, nostrum voluptate
+                  dolores? Quis eum totam nam a perferendis nemo soluta possimus
+                  corrupti.
+                </div>
+              </div>
+            </div>
+
+            <div class="marquee-item" onclick="openModal('Modal 3')">
+              <div class="image-box">IMAGE</div>
+              <div class="text-box">
+                <div class="marquee-text">
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Assumenda repellat, quam earum odio mollitia suscipit
+                  doloremque molestias veritatis recusandae, nostrum voluptate
+                  dolores? Quis eum totam nam a perferendis nemo soluta possimus
+                  corrupti.
+                </div>
+              </div>
+            </div>
+
+            <div class="text-center mt-2">
+              <button onclick="openListModal()" class="read-more-btn">
+                Read More
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer  -->
+
+    <footer class="footer">
+      <h2>Nishkarsh Dixit</h2>
+      <p>Nishdixit0207@gmail.com</p>
+
+      <!-- Social Icons -->
+      <div class="social-links">
+        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+
+        <a href="https://github.com/nishkarsh002" target="_blank">
+          <i class="fa-brands fa-github"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/nishkarsh-dixit/" target="_blank">
+          <i class="fa-brands fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://www.instagram.com/nish.dixit002/"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+      </div>
+
+      <!-- Copyright -->
+    </footer>
+
+    <div id="customModal" class="modal-overlay">
+      <div class="modal-box">
+        <h5 id="modalTitle">Modal Title</h5>
+        <p>More detailed info about this item...</p>
+        <button onclick="closeModal()">Close</button>
+      </div>
+    </div>
+
+    <!-- list modal  -->
+
+    <div id="listModal" class="modal-overlay">
+      <div class="modal-box">
+        <h5>More Items</h5>
+        <ul style="text-align: left; padding-left: 20px">
+          <li>Additional Item 1</li>
+          <li>Additional Item 2</li>
+          <li>Additional Item 3</li>
+          <li>Additional Item 4</li>
+        </ul>
+        <button onclick="closeListModal()">Close</button>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      src =
+        "https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js";
+    </script>
+    <script>
+      const carousel = new bootstrap.Carousel(
+        document.querySelector("#carouselExampleSlidesOnly"),
+        {
+          interval: 2000, // auto-slide interval
+          ride: "carousel",
+        }
+      );
+
+      function goToSlide(index) {
+        carousel.to(index);
+      }
+
+      function openModal(title) {
+        document.getElementById("customModal").classList.add("active");
+        document.getElementById("modalTitle").innerText = title;
+      }
+
+      function closeModal() {
+        document.getElementById("customModal").classList.remove("active");
+      }
+
+      function openListModal() {
+        document.getElementById("listModal").classList.add("active");
+      }
+
+      function closeListModal() {
+        document.getElementById("listModal").classList.remove("active");
+      }
+    </script>
+  </body>
+</html>
